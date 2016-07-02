@@ -13,7 +13,6 @@ var utf8 = require('utf8');
 var MultiUpload = require('./multi_upload');
 var HttpRequest = require('./http_request');
 var helper = require('./helper');
-var config = require('./config');
 
 //debug
 var util = require('util');

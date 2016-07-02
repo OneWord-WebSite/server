@@ -3,10 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <script src="//g.tbcdn.cn/mtb/lib-flexible/0.3.2/??flexible.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      position: relative;
+      margin: 0;
+      background-image: url('http://oneword.ufile.ucloud.com.cn/logobg.gif');
+      background-size: cover;
+      background-position: center center;
+      font-family: PingFang SC, Lantinghei SC, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
+      font-weight: 300;
+    }
+
+    .logo {
+      position: absolute;
+      left: 50%;
+      top: 30%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+    }
+
+    .login {
+      position: absolute;
+      left: 50%;
+      bottom: 30%;
+      transform: translate(-50%, 50%);
+      width: 2.5rem;
+      height: 3.5rem;
+      background-color: rgba(255, 255, 255, .9);
+      border-radius: .3rem;
+      box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+    }
+
+    .login img {
+      position: absolute;
+      left: 50%;
+      top: 15%;
+      transform: translateX(-50%);
+      width: 70%;
+    }
+
+    .login span {
+      font-size: 14px;
+      position: absolute;
+      left: 50%;
+      bottom: 15%;
+      width: 100%;
+      text-align: center;
+      transform: translateX(-50%);
+    }
+  </style>
 </head>
 <body>
-  <div>  
-    <a href="https://api.weibo.com/oauth2/authorize?client_id=3407672250&response_type=code&redirect_uri=http://oneword.cc/api/oauth">微博登陆</a>
-</div>  
+  <img class="logo" src="http://oneword.ufile.ucloud.com.cn/logo.png">
+  <a class="login" href="https://api.weibo.com/oauth2/authorize?client_id=3407672250&response_type=code&redirect_uri=http://oneword.cc/api/oauth">
+    <img src="http://oneword.ufile.ucloud.com.cn/weibo.svg">
+    <span>微博登录</span>
+  </a>
 </body>
 </html>
