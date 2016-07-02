@@ -9,32 +9,33 @@ router.get('/login', Oauth.login);  // done
 
 router.get('/oauth', Oauth.oauth); // done
 
-router.get('/users/:id', User.getUser); // done
 
-router.put('/users/bio', User.updateBio); // done
+router.get('/users/:id', User.isLogin, User.getUser); // done
 
-router.get('/weibo/users/:id', Oauth.getWeiboUserInfo(['screen_name'])); // done
+router.put('/users/bio', User.isLogin, User.updateBio); // done
 
-router.get('/users/:id/share', Word.getShareByUserId); // done
+router.get('/weibo/users/:id', User.isLogin, Oauth.getWeiboUserInfo(['screen_name'])); // done
 
-router.get('/users/:id/favour', Word.getFavourByUserId); // done
+router.get('/users/:id/share', User.isLogin, Word.getShareByUserId); // done
+
+router.get('/users/:id/favour', User.isLogin, Word.getFavourByUserId); // done
 
 router.get('/admin', User.admin); // done
 
-router.get('/admin/words', Word.getUnvalidated); // node
+router.get('/admin/words', User.isLogin, Word.getUnvalidated); // node
 
-router.patch('/admin/words/:id', Word.valid);
+router.patch('/admin/words/:id', User.isLogin, Word.valid);
 
-router.delete('/admin/words/:id', Word.unvalid);
+router.delete('/admin/words/:id', User.isLogin, Word.unvalid);
 
-router.post('/words', Word.add);
+router.post('/words', User.isLogin, Word.add);
 
-router.get('/words/:id', Word.getDetails);
+router.get('/words/:id', User.isLogin, Word.getDetails);
 
-router.get('/words', Word.get);
+router.get('/words', User.isLogin, Word.get);
 
-router.post('/praise', Praise.up);
+router.post('/praise', User.isLogin, Praise.up);
 
-router.delete('/praise', Praise.down);
+router.delete('/praise', User.isLogin, Praise.down);
 
 module.exports = router;

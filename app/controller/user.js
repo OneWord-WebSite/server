@@ -27,3 +27,13 @@ exports.admin = function*() {
     yield this.render('login');
   }
 };
+
+exports.isLogin = function*(next) {
+  var uid = this.session.uid;
+
+  if (uid) {
+    yield next;
+  } else {
+    this.status = 403;
+  }
+}

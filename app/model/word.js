@@ -4,7 +4,7 @@ var Sequelize = require('sequelize');
 var Word = sequelize.define('Word', {
   role: Sequelize.STRING,
   cartoon: Sequelize.STRING,
-  userId: Sequelize.INTEGER,
+  userId: Sequelize.INTEGER(20).UNSIGNED,
   pic: Sequelize.STRING,
   word: Sequelize.STRING,
   verification: {type: Sequelize.BOOLEAN, defaultValue: false}
