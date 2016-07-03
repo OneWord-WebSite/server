@@ -5,24 +5,21 @@ var Word = require('../app/controller/word');
 var Praise = require('../app/controller/praise');
 var Oauth = require('../app/controller/oauth');
 
-router.get('/login', Oauth.login);  // done
+router.get('/login', Oauth.login);  
 
-router.get('/oauth', Oauth.oauth); // done
+router.get('/oauth', Oauth.oauth); 
 
+router.get('/users/:id', User.isLogin, User.getUser); 
 
-router.get('/users/:id', User.isLogin, User.getUser); // done
+router.put('/users/bio', User.isLogin, User.updateBio); 
 
-router.put('/users/bio', User.isLogin, User.updateBio); // done
+router.get('/weibo/users/:id', User.isLogin, Oauth.getWeiboUserInfo(['screen_name'])); 
 
-router.get('/weibo/users/:id', User.isLogin, Oauth.getWeiboUserInfo(['screen_name'])); // done
+router.get('/users/:id/share', User.isLogin, Word.getShareByUserId); 
 
-router.get('/users/:id/share', User.isLogin, Word.getShareByUserId); // done
+router.get('/users/:id/favour', User.isLogin, Word.getFavourByUserId); 
 
-router.get('/users/:id/favour', User.isLogin, Word.getFavourByUserId); // done
-
-router.get('/admin', User.admin); // done
-
-router.get('/admin/words', User.isLogin, Word.getUnvalidated); // node
+router.get('/admin/words', User.isLogin, User.admin, Word.getUnvalidated); 
 
 router.patch('/admin/words/:id', User.isLogin, Word.valid);
 

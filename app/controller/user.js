@@ -18,18 +18,17 @@ exports.updateBio = function*() {
   this.body = user.get();
 };
 
-exports.admin = function*() {
+exports.admin = function*(next) {
   var userType = this.session.userType;
-
+  console.log(userType)
   if (userType === 1) {
-    this.redirect('/admin.html');
+    yield next;
   } else {
-    yield this.render('login');
+    this.status = 403;
   }
 };
 
 exports.isLogin = function*(next) {
-  console.log(this);
   var uid = this.session.uid;
 
   if (uid) {
