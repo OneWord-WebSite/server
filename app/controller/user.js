@@ -29,6 +29,7 @@ exports.admin = function*() {
 };
 
 exports.isLogin = function*(next) {
+  console.log(this);
   var uid = this.session.uid;
 
   if (uid) {
