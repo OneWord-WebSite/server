@@ -33,10 +33,11 @@ exports.getDetails = function*() {
 };
 
 exports.get = function*() {
+
   var pageIndex = this.request.query.page;
   var data = yield Word.find({
     verification: true
-  }, pageIndex);
+  }, null, pageIndex);
 
   this.body = data.map(d => {
     var r = d.get();
@@ -50,7 +51,7 @@ exports.getShareByUserId = function*() {
   var data = yield Word.find({
     verification: true,
     userId: +this.params.id
-  }, null);
+  }, null, null);
 
   this.body = data.map(d => {
     var r = d.get();
@@ -63,6 +64,7 @@ exports.getShareByUserId = function*() {
 exports.getFavourByUserId = function*() {
   var data = yield Word.find({
     verification: true,
+  }, {
     userId: +this.params.id
   }, null);
 

@@ -36,18 +36,21 @@ exports.findOne = function(conditions) {
   };
 };
 
-exports.find = function(conditions, pageIndex) {
+exports.find = function(wordConditions, praiseConditons, pageIndex) {
   Praise.belongsTo(Word);
   Word.hasMany(Praise);
 
   return cb => {
     Word
       .findAll({
-        include: [Praise],
-        where: conditions,
+        include: [{
+          model: Praise,
+          where: praiseConditons
+        }],
+        where: wordConditions,
         offset: pageIndex ? pageIndex * 5 : null,
         limit: pageIndex ? 5 : null,
-        order: 'id'
+        order: 'id DESC'
       })
       .then(words => {
         cb(null, words);
